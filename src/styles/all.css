@@ -1,0 +1,27 @@
+.textColor_1 {
+  color: #000;
+}
+.textColor_2 {
+  color: #0a1fdb;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+body {
+  padding: 0 40px;
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+p {
+  margin: 0;
+}
