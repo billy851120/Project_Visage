@@ -174,20 +174,16 @@
   }
 
   .search input {
-    border-left: none;
-    border-right: none;
-    border-top: none;
-    border-bottom: 1px solid #000;
+    border: none;
+    box-shadow: 0px 1px #000;
     padding: 11px 11px;
     font-size: 0.9rem;
     width: 192px;
   }
 
   .search input:hover {
-    border-left: 2px solid #000;
-    border-right: 2px solid #000;
-    border-top: 2px solid #000;
-    border-bottom: 2px solid #000;
+    box-shadow: none;
+    outline: 2px solid #000;
   }
 
   .search span {

@@ -58,7 +58,7 @@
     position: absolute;
     width: 80%;
     height: 80%;
-    left: 52%;
+    left: 47%;
     top: 50%;
     transform: translate(-50%, -50%);
     background-color: v-bind(colorValue);

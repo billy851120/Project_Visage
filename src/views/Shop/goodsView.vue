@@ -23,7 +23,10 @@
     </div>
     <div class="goodsView_item">
       <div class="goodsView_img">
-        <div class="img_box">
+        <div
+          class="img_box img_cursor"
+          data-curser="你好"
+        >
           <img
             src="/src/assets/imgs/01.jpg"
             alt=""
@@ -104,7 +107,70 @@
             </div>
           </div>
         </div>
-        <div class="Collapse"></div>
+        <div class="Collapse">
+          <div class="collapse-info">
+            <el-collapse
+              v-model="activeNames"
+              @change="handleChange"
+              accordion
+            >
+              <el-collapse-item
+                title="Product Info"
+                name="1"
+              >
+                <template #icon="{ isActive }">
+                  <span class="ms-auto icon-ele">
+                    <el-icon v-if="isActive"><Minus /></el-icon>
+                    <el-icon v-else><Plus /></el-icon>
+                  </span>
+                </template>
+                <div class="collapse-info_text">
+                  I'm a product detail. I'm a great place to add more
+                  information about your product such as sizing, material, care
+                  and cleaning instructions. This is also a great space to write
+                  what makes this product special and how your customers can
+                  benefit from this item.
+                </div>
+              </el-collapse-item>
+              <el-collapse-item
+                title="Return & Refund Policy"
+                name="2"
+              >
+                <template #icon="{ isActive }">
+                  <span class="ms-auto icon-ele">
+                    <el-icon v-if="isActive"><Minus /></el-icon>
+                    <el-icon v-else><Plus /></el-icon>
+                  </span>
+                </template>
+                <div class="collapse-info_text">
+                  I’m a Return and Refund policy. I’m a great place to let your
+                  customers know what to do in case they are dissatisfied with
+                  their purchase. Having a straightforward refund or exchange
+                  policy is a great way to build trust and reassure your
+                  customers that they can buy with confidence.
+                </div>
+              </el-collapse-item>
+              <el-collapse-item
+                title="Shipping Info"
+                name="3"
+              >
+                <template #icon="{ isActive }">
+                  <span class="ms-auto icon-ele">
+                    <el-icon v-if="isActive"><Minus /></el-icon>
+                    <el-icon v-else><Plus /></el-icon>
+                  </span>
+                </template>
+                <div class="collapse-info_text">
+                  I'm a shipping policy. I'm a great place to add more
+                  information about your shipping methods, packaging and cost.
+                  Providing straightforward information about your shipping
+                  policy is a great way to build trust and reassure your
+                  customers that they can buy from you with confidence.
+                </div>
+              </el-collapse-item>
+            </el-collapse>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -302,5 +368,63 @@
     color: #000;
     font-size: 0.9rem;
     font-weight: normal;
+  }
+  ::v-deep(.collapse-info button) {
+    color: #0a1fdb;
+    font-size: 1.04rem;
+    font-weight: 800;
+  }
+  .Collapse {
+    margin-top: 50px;
+  }
+  ::v-deep(.collapse-info_text) {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    font-weight: 400;
+    color: #000;
+  }
+  .el-collapse:first-child {
+    border-top: none;
+  }
+  ::v-deep(.el-collapse-item__wrap) {
+    border-bottom: 1px solid #000;
+  }
+  ::v-deep(.el-collapse-item__header) {
+    border-bottom: 1px solid #000;
+    transition: 0.6s 0.3s;
+  }
+  ::v-deep(.el-collapse-item__header.is-active) {
+    border: none;
+  }
+  .img_cursor {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  /* Tooltip 內容 */
+  .img_cursor::after {
+    content: attr(data-curser); /* 讀取 HTML 的 data-tooltip 屬性 */
+    position: absolute;
+    bottom: 150%; /* 讓 tooltip 顯示在上方 */
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 6px 10px;
+    font-size: 14px;
+    white-space: nowrap;
+    border-radius: 5px;
+    /* opacity: 0; */
+    /* visibility: hidden; */
+    /* transition: opacity 0.3s ease-in-out; */
+    z-index: 9;
+  }
+
+  /* 當滑鼠移入時顯示 tooltip */
+  .img_cursor:hover::after {
+    opacity: 1;
+    visibility: visible;
+    z-index: 9;
   }
 </style>
