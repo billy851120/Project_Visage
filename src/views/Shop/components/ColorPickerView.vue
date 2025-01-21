@@ -16,9 +16,11 @@
 
 <script setup lang="ts" name="">
   //引入
+  import { useGoodsStore } from "@/stores/goodsStore";
   defineProps(["colorName", "colorValue", "sendColor", "clearColor"]);
 
   //數據
+  const goodsStore = useGoodsStore();
   // const checkedColor = defineModel();
 
   //方法

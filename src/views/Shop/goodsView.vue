@@ -33,10 +33,26 @@
           />
         </div>
         <div class="img_list">
+          <input
+            id="defaultImage"
+            type="radio"
+            name="list_img"
+          />
+          <input
+            id="hoverImage_0"
+            type="radio"
+            name="list_img"
+          />
+          <input
+            id="hoverImage_1"
+            type="radio"
+            name="list_img"
+          />
+
           <div class="thumbnail-container">
             <button>
               <img
-                src="/src/assets/imgs/01.jpg"
+                :src="goodsStore.filteredProducts[0].defaultImage"
                 alt=""
               />
             </button>
@@ -44,7 +60,7 @@
           <div class="thumbnail-container">
             <button>
               <img
-                src="/src/assets/imgs/01.jpg"
+                :src="goodsStore.filteredProducts[0].hoverImage[0]"
                 alt=""
               />
             </button>
@@ -52,7 +68,7 @@
           <div class="thumbnail-container">
             <button>
               <img
-                src="/src/assets/imgs/01.jpg"
+                :src="goodsStore.filteredProducts[0].hoverImage[1]"
                 alt=""
               />
             </button>
@@ -75,12 +91,10 @@
         <div class="color mb-3">
           <p class="mb-2">Color: Black</p>
           <ColorPickerView
+            v-for="color in goodsStore.filteredProducts[0].color"
             :sendColor="getColor"
             :clearColor="clearColor"
-          ></ColorPickerView>
-          <ColorPickerView
-            :sendColor="getColor"
-            :clearColor="clearColor"
+            :colorValue="color"
           ></ColorPickerView>
         </div>
         <div class="Quantity mb-4">
@@ -178,13 +192,20 @@
 
 <script setup lang="ts" name="">
   //引入
-  import { ref } from "vue";
+  import { ref, onBeforeMount } from "vue";
   import { useRoute } from "vue-router";
   import ColorPickerView from "./components/ColorPickerView.vue";
+  import type { CollapseModelValue } from "element-plus";
+  import { useGoodsStore } from "@/stores/goodsStore";
 
   //數據
   const route = useRoute();
   const colorHover = ref();
+  const activeNames = ref(["1"]);
+  const handleChange = (val: CollapseModelValue) => {
+    console.log(val);
+  };
+  const goodsStore = useGoodsStore();
 
   //方法
   function getColor(value: any) {
@@ -193,6 +214,11 @@
   function clearColor(valur: any) {
     colorHover.value = "";
   }
+
+  //生命週期
+  onBeforeMount(() => {
+    goodsStore.setId(Number(route.params.id));
+  });
 </script>
 <style scoped>
   /* .goodsView_info .Quantity input[type="number"]::-webkit-inner-spin-button,

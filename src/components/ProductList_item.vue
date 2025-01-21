@@ -21,7 +21,7 @@
             />
             <div class="hoverImage">
               <img
-                :src="item.hoverImage"
+                :src="item.hoverImage[0]"
                 alt=""
               />
             </div>
