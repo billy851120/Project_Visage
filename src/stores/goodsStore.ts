@@ -15,9 +15,9 @@ export const useGoodsStore = defineStore("goods", {
           color: ["blue", "red"],
           category: ["Adults", "MostPopular"],
           defaultImage:
-            "/src/assets/imgs/84770f_46124d58147e46368cb73b4761c936b4~mv2.webp",
+            "/src/assets/imgs/84770f_46124d58147e46368cb73b4761c936b4~mv2 (1).webp",
           hoverImage: [
-            "/src/assets/imgs/84770f_971a52319ced40d6becd8c7e858a01e4~mv2.webp",
+            "/src/assets/imgs/84770f_971a52319ced40d6becd8c7e858a01e4~mv2 (1).webp",
             "/src/assets/imgs/84770f_96be5e3c9bbd4ad8b10decf2d1aa80b7~mv2.webp",
           ],
         },

@@ -23,54 +23,83 @@
     </div>
     <div class="goodsView_item">
       <div class="goodsView_img">
-        <div
+        <transition-group
           class="img_box img_cursor"
-          data-curser="你好"
+          name="fade"
+          tag="div"
         >
           <img
-            src="/src/assets/imgs/01.jpg"
+            key="view1"
+            v-if="selectedImg === goodsStore.filteredProducts[0].defaultImage"
+            :src="selectedImg"
             alt=""
           />
-        </div>
+          <img
+            key="view2"
+            v-if="selectedImg === goodsStore.filteredProducts[0].hoverImage[0]"
+            :src="selectedImg"
+            alt=""
+          />
+          <img
+            key="view3"
+            v-if="selectedImg === goodsStore.filteredProducts[0].hoverImage[1]"
+            :src="selectedImg"
+            alt=""
+          />
+        </transition-group>
+
         <div class="img_list">
           <input
             id="defaultImage"
             type="radio"
             name="list_img"
+            :value="goodsStore.filteredProducts[0].defaultImage"
+            v-model="selectedImg"
           />
           <input
             id="hoverImage_0"
             type="radio"
             name="list_img"
+            :value="goodsStore.filteredProducts[0].hoverImage[0]"
+            v-model="selectedImg"
           />
           <input
             id="hoverImage_1"
             type="radio"
             name="list_img"
+            :value="goodsStore.filteredProducts[0].hoverImage[1]"
+            v-model="selectedImg"
           />
 
           <div class="thumbnail-container">
             <button>
-              <img
-                :src="goodsStore.filteredProducts[0].defaultImage"
-                alt=""
-              />
+              <label for="defaultImage">
+                <img
+                  :src="goodsStore.filteredProducts[0].defaultImage"
+                  alt=""
+                />
+              </label>
+            </button>
+          </div>
+
+          <div class="thumbnail-container">
+            <button>
+              <label for="hoverImage_0">
+                <img
+                  :src="goodsStore.filteredProducts[0].hoverImage[0]"
+                  alt=""
+                />
+              </label>
             </button>
           </div>
           <div class="thumbnail-container">
             <button>
-              <img
-                :src="goodsStore.filteredProducts[0].hoverImage[0]"
-                alt=""
-              />
-            </button>
-          </div>
-          <div class="thumbnail-container">
-            <button>
-              <img
-                :src="goodsStore.filteredProducts[0].hoverImage[1]"
-                alt=""
-              />
+              <label for="hoverImage_1">
+                <img
+                  :src="goodsStore.filteredProducts[0].hoverImage[1]"
+                  alt=""
+                />
+              </label>
             </button>
           </div>
         </div>
@@ -206,6 +235,7 @@
     console.log(val);
   };
   const goodsStore = useGoodsStore();
+  const selectedImg = ref(goodsStore.filteredProducts[0].defaultImage);
 
   //方法
   function getColor(value: any) {
@@ -331,12 +361,18 @@
     border: 1px solid rgb(199, 199, 199);
   }
   .thumbnail-container button {
-    height: 45px;
     width: 100%;
+    height: 45px;
     display: inline-block;
     padding: 0;
     border: none;
     cursor: default;
+  }
+  .thumbnail-container label {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    border: none;
   }
   .thumbnail-container button img {
     width: 100%;
@@ -425,32 +461,26 @@
   .img_cursor {
     position: relative;
     display: inline-block;
+    /* cursor: url("../../assets/imgs/Cursor.png"), auto; */
     cursor: pointer;
   }
 
-  /* Tooltip 內容 */
-  .img_cursor::after {
-    content: attr(data-curser); /* 讀取 HTML 的 data-tooltip 屬性 */
-    position: absolute;
-    bottom: 150%; /* 讓 tooltip 顯示在上方 */
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.75);
-    color: white;
-    padding: 6px 10px;
-    font-size: 14px;
-    white-space: nowrap;
-    border-radius: 5px;
-    /* opacity: 0; */
-    /* visibility: hidden; */
-    /* transition: opacity 0.3s ease-in-out; */
-    z-index: 9;
+  .img_list input[type="radio"] {
+    display: none;
   }
 
-  /* 當滑鼠移入時顯示 tooltip */
-  .img_cursor:hover::after {
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s;
+  }
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+    position: absolute;
+  }
+  .fade-leave-from,
+  .fade-enter-to {
     opacity: 1;
-    visibility: visible;
-    z-index: 9;
+    position: static;
   }
 </style>
