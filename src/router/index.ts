@@ -9,6 +9,7 @@ import SettingUp from "@/views/FAQ/components/SettingUp.vue";
 import Contact from "@/views/Contact/index.vue";
 import GoodsList from "@/views/Shop/goodsList.vue";
 import GoodsView from "@/views/Shop/goodsView.vue";
+import Cart from "@/views/Cart/index.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -61,6 +62,10 @@ const router = createRouter({
         {
           path: "contact",
           component: Contact,
+        },
+        {
+          path: "cart",
+          component: Cart,
         },
       ],
     },
