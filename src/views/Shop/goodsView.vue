@@ -136,7 +136,20 @@
         <div class="submit">
           <div class="submit_top mb-3">
             <div class="addCart">
-              <button>Add to Cart</button>
+              <button
+                @click="
+                  cartStore.addToCart({
+                    id: 1,
+                    name: 'asd',
+                    price: 10,
+                    color: 'red',
+                    image: 'sss',
+                    quantity: 5,
+                  })
+                "
+              >
+                Add to Cart
+              </button>
             </div>
             <div class="like">
               <button>
@@ -226,6 +239,7 @@
   import ColorPickerView from "./components/ColorPickerView.vue";
   import type { CollapseModelValue } from "element-plus";
   import { useGoodsStore } from "@/stores/goodsStore";
+  import { useCartStore } from "@/stores/cartStore";
 
   //數據
   const route = useRoute();
@@ -235,6 +249,8 @@
     console.log(val);
   };
   const goodsStore = useGoodsStore();
+  const cartStore = useCartStore();
+
   const selectedImg = ref(goodsStore.filteredProducts[0].defaultImage);
 
   //方法

@@ -5,7 +5,9 @@
         <div class="title">
           <h6>My cart</h6>
         </div>
-        <div class="cartList"></div>
+        <div class="cartList">
+          <goods></goods>
+        </div>
         <div class="code">
           <a
             class="d-inline-block mb-3"
@@ -52,6 +54,7 @@
 
 <script setup lang="ts" name="">
   //引入
+  import goods from "./components/goods.vue";
 
   //數據
 
@@ -70,8 +73,7 @@
   }
   .cartList {
     border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    padding: 50px 0;
+    padding: 20px 0;
     margin: 23px 0;
   }
   .Subtotal {
