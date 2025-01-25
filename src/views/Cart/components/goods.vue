@@ -1,16 +1,18 @@
 <template>
-  {{ cartStore.cartItems }}
   <div class="container goodsContent">
-    <div class="row item">
+    <div
+      v-for="item in cartStore.cartItems"
+      class="row item"
+    >
       <div class="col-2 img">
         <img
-          src="@/assets/imgs/84770f_4f3970a052ef4bc3914f116a8160b7f2~mv2.webp"
+          :src="item.image as string"
           alt=""
         />
       </div>
       <div class="col-4 txt">
-        <div class="title mb-3">I'm a Product</div>
-        <div class="price mb-2">$10.00</div>
+        <div class="title mb-3">{{ item.name }}</div>
+        <div class="price mb-2">{{ item.price }}</div>
         <div class="color">Color:Grey</div>
       </div>
       <div class="col-2 count_box">

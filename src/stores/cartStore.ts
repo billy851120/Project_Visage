@@ -26,7 +26,6 @@ export const useCartStore = defineStore("cart", {
       image: String;
       quantity: Number;
     }) {
-      console.log("asdasdasdsad");
       this.cartItems.push({ ...products, quantity: 1 });
     },
   },

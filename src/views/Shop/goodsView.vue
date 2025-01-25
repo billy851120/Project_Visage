@@ -139,12 +139,12 @@
               <button
                 @click="
                   cartStore.addToCart({
-                    id: 1,
-                    name: 'asd',
-                    price: 10,
-                    color: 'red',
-                    image: 'sss',
-                    quantity: 5,
+                    id: goods.id,
+                    name: goods.name,
+                    price: goods.price,
+                    color: goods.color[0],
+                    image: goods.defaultImage,
+                    quantity: 1,
                   })
                 "
               >
@@ -250,8 +250,9 @@
   };
   const goodsStore = useGoodsStore();
   const cartStore = useCartStore();
-
   const selectedImg = ref(goodsStore.filteredProducts[0].defaultImage);
+  const goods = ref(goodsStore.filteredProducts[0]);
+  console.log(goodsStore.filteredProducts[0], "前");
 
   //方法
   function getColor(value: any) {
@@ -264,6 +265,7 @@
   //生命週期
   onBeforeMount(() => {
     goodsStore.setId(Number(route.params.id));
+    console.log(goodsStore.filteredProducts[0], "後");
   });
 </script>
 <style scoped>

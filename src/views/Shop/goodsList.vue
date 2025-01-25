@@ -67,11 +67,12 @@
 
 <script setup lang="ts" name="">
   //引入
-  import { computed, ref, watch } from "vue";
+  import { computed, ref, watch, onMounted } from "vue";
   import { useRoute } from "vue-router";
   import ProductList_item from "@/components/ProductList_item.vue";
   import Sort from "./components/Sort.vue";
   import { useGoodsStore } from "@/stores/goodsStore";
+  import { de } from "element-plus/es/locales.mjs";
 
   //數據
   const goodsStore = useGoodsStore();
@@ -105,6 +106,8 @@
     }
     return "All Products";
   });
+
+  //生命週期
 </script>
 
 <style scoped>
