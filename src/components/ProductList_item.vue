@@ -61,10 +61,11 @@
   const route = useRoute();
   const goodsStore = useGoodsStore();
   const shopList = ref<HTMLElement | null>(null);
-
   const filteredProducts = computed(() => goodsStore.filteredProducts);
   const mostPopularProducts = computed(() => goodsStore.mostPopularProducts);
   const selectedCategory = ref("");
+
+  console.log(goodsStore.filteredProducts);
 
   //方法
   onMounted(() => {

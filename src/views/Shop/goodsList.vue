@@ -46,7 +46,7 @@
         goodsStore.filters.colorPicker[0]
       "
       class="claer_All"
-      @click="clearAll"
+      @click="handleClearAll"
     >
       Clear All
     </button>
@@ -67,18 +67,17 @@
 
 <script setup lang="ts" name="">
   //引入
-  import { computed, ref, watch, onMounted } from "vue";
+  import { computed, ref, watch, onBeforeMount } from "vue";
   import { useRoute } from "vue-router";
   import ProductList_item from "@/components/ProductList_item.vue";
   import Sort from "./components/Sort.vue";
   import { useGoodsStore } from "@/stores/goodsStore";
-  import { de } from "element-plus/es/locales.mjs";
 
   //數據
   const goodsStore = useGoodsStore();
   const route = useRoute();
 
-  defineProps(["clearType", "clearRange", "clearColor", "clearAll"]);
+  // defineProps(["clearType", "clearRange", "clearColor"]);
 
   const validCategories = [
     "AllProducts",
@@ -88,6 +87,16 @@
   ] as const;
 
   //方法
+  const props = defineProps<{
+    clearType: (type: string) => void;
+    clearRange: () => void;
+    clearColor: (color: string) => void;
+    clearAll: () => void;
+  }>();
+
+  const handleClearAll = () => {
+    props.clearAll();
+  };
 
   const category = computed(() => {
     const queryValue = route.params.browse;

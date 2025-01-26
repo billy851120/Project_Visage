@@ -285,9 +285,15 @@ export const useGoodsStore = defineStore("goods", {
       this.filters.sortOption = options;
     },
     clearAll(option: any) {
-      console.log(this.filters.colorPicker);
       this.filters.colorPicker = [];
-      console.log(this.filters.colorPicker);
+    },
+    clearAll2() {
+      this.filters.id = 0;
+      this.filters.category = "";
+      this.filters.priceRange = [6, 10];
+      this.filters.colorPicker = [];
+      this.filters.ProductType = [];
+      this.filters.sortOption = "default";
     },
   },
 });

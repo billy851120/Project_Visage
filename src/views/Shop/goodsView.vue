@@ -234,7 +234,7 @@
 
 <script setup lang="ts" name="">
   //引入
-  import { ref, onBeforeMount } from "vue";
+  import { onUnmounted, ref } from "vue";
   import { useRoute } from "vue-router";
   import ColorPickerView from "./components/ColorPickerView.vue";
   import type { CollapseModelValue } from "element-plus";
@@ -250,9 +250,11 @@
   };
   const goodsStore = useGoodsStore();
   const cartStore = useCartStore();
+  goodsStore.setId(Number(route.params.id));
   const selectedImg = ref(goodsStore.filteredProducts[0].defaultImage);
   const goods = ref(goodsStore.filteredProducts[0]);
-  console.log(goodsStore.filteredProducts[0], "前");
+
+  console.log(goodsStore.filteredProducts);
 
   //方法
   function getColor(value: any) {
@@ -263,22 +265,12 @@
   }
 
   //生命週期
-  onBeforeMount(() => {
-    goodsStore.setId(Number(route.params.id));
-    console.log(goodsStore.filteredProducts[0], "後");
+  onUnmounted(() => {
+    goodsStore.clearAll2();
+    console.log(goodsStore.filteredProducts);
   });
 </script>
 <style scoped>
-  /* .goodsView_info .Quantity input[type="number"]::-webkit-inner-spin-button,
-  .goodsView_info .Quantity input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-    width: 20px;
-    height: 20px;
-    background-color: #ccc;
-    color: #000;
-  } */
-
   .goodsView_info .submit .submit_top {
     display: flex;
     gap: 0 10px;
