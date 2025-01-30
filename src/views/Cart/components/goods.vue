@@ -17,24 +17,24 @@
       </div>
       <div class="col-2 count_box">
         <div class="d-flex count">
-          <button @click="sub">
+          <button @click="sub(item)">
             <el-icon><Minus /></el-icon>
           </button>
           <input
             type="number"
-            :value="quantity"
+            :value="item.quantity"
             readonly
           />
-          <button @click="add()">
+          <button @click="add(item)">
             <el-icon><Plus /></el-icon>
           </button>
         </div>
       </div>
       <div class="col-3 totalPrice ps-5">
-        ${{ (quantity * price).toFixed(2) }}
+        ${{ (Number(item.quantity) * price).toFixed(2) }}
       </div>
       <div class="col-1 del">
-        <button>
+        <button @click="del(item.id)">
           <el-icon><DeleteFilled /></el-icon>
         </button>
       </div>
@@ -49,31 +49,40 @@
 
   //數據
   const cartStore = useCartStore();
-  const quantity = ref(1);
   const minValue = 1;
   const maxValue = 99;
   const price = 10;
 
   //方法
-  function sub() {
-    if (quantity.value > minValue) {
-      quantity.value--;
+  function sub(item: any) {
+    if (Number(item.quantity) > minValue) {
+      item.quantity--;
     }
   }
-  function add() {
-    if (quantity.value < maxValue) {
-      quantity.value++;
+  function add(item: any) {
+    if (Number(item.quantity) < maxValue) {
+      item.quantity++;
     }
   }
-  function del() {}
+  function del(id: any) {
+    cartStore.removeFromCart(id);
+  }
 </script>
 
 <style scoped>
   .goodsContent {
     padding-bottom: 20px;
+    /* border-bottom: 1px solid #ccc; */
+  }
+  .item:first-child {
+    padding-top: 0;
+    padding-bottom: 20px;
     border-bottom: 1px solid #ccc;
   }
   .item {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
   }
   .img {
     padding: 0;

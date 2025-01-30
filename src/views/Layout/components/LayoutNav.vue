@@ -43,7 +43,7 @@
       </div>
       <div class="shopCar">
         <router-link to="/cart">
-          <span class="shopCar_count">0</span>
+          <span class="shopCar_count">{{ cartStore.totalQuantity }}</span>
           <svg
             style="display: inline-block; width: 25px; padding-bottom: 4px"
             xmlns="http://www.w3.org/2000/svg"
@@ -61,9 +61,10 @@
 
 <script setup lang="ts" name="">
   //引入
-  import { ref, reactive, onMounted } from "vue";
+  import { ref, reactive, onMounted, watch } from "vue";
   import { useScroll, useEventListener } from "@vueuse/core";
   import { RouterLink } from "vue-router";
+  import { useCartStore } from "@/stores/cartStore";
 
   //數據
   const Category_Nav = reactive([
@@ -71,6 +72,7 @@
     { id: "N002", name: "FAQ" },
     { id: "N003", name: "Contact" },
   ]);
+  const cartStore = useCartStore();
 
   //方法
   const { isScrolling } = useScroll(window);
@@ -107,6 +109,11 @@
       ScrollCountUp = 0;
     }
   });
+
+  //監控
+  // watch(cartStore.totalQuantity, (item) => {
+
+  // });
 </script>
 
 <style scoped>

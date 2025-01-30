@@ -246,15 +246,13 @@
   const colorHover = ref();
   const activeNames = ref(["1"]);
   const handleChange = (val: CollapseModelValue) => {
-    console.log(val);
+    // console.log(val);
   };
   const goodsStore = useGoodsStore();
   const cartStore = useCartStore();
   goodsStore.setId(Number(route.params.id));
   const selectedImg = ref(goodsStore.filteredProducts[0].defaultImage);
   const goods = ref(goodsStore.filteredProducts[0]);
-
-  console.log(goodsStore.filteredProducts);
 
   //方法
   function getColor(value: any) {
@@ -267,7 +265,6 @@
   //生命週期
   onUnmounted(() => {
     goodsStore.clearAll2();
-    console.log(goodsStore.filteredProducts);
   });
 </script>
 <style scoped>
