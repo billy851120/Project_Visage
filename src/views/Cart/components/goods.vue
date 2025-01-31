@@ -2,6 +2,7 @@
   <div class="container goodsContent">
     <div
       v-for="item in cartStore.cartItems"
+      v-loading="item.loading"
       class="row item"
     >
       <div class="col-2 img">
@@ -34,7 +35,7 @@
         ${{ (Number(item.quantity) * price).toFixed(2) }}
       </div>
       <div class="col-1 del">
-        <button @click="del(item.id)">
+        <button @click="del(item)">
           <el-icon><DeleteFilled /></el-icon>
         </button>
       </div>
@@ -64,8 +65,12 @@
       item.quantity++;
     }
   }
-  function del(id: any) {
-    cartStore.removeFromCart(id);
+  function del(item: any) {
+    item.loading = true;
+    setTimeout(() => {
+      cartStore.removeFromCart(item.id);
+      item.loading = false;
+    }, 2000);
   }
 </script>
 
@@ -80,6 +85,7 @@
     border-bottom: 1px solid #ccc;
   }
   .item {
+    position: relative;
     padding-top: 20px;
     padding-bottom: 20px;
     border-bottom: 1px solid #ccc;
@@ -139,5 +145,10 @@
     border: none;
     background-color: transparent;
     color: #000;
+  }
+  .loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
   }
 </style>

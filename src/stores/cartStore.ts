@@ -12,6 +12,7 @@ export const useCartStore = defineStore("cart", {
           color: String;
           image: String;
           quantity: Number;
+          loading: Boolean;
         }[]
       >([]),
     };
@@ -32,6 +33,7 @@ export const useCartStore = defineStore("cart", {
       color: String;
       image: String;
       quantity: Number;
+      loading: Boolean;
     }) {
       const item = this.cartItems.find((element) => element.id === products.id);
       if (item) {
