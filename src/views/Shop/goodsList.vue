@@ -116,7 +116,13 @@
     return "All Products";
   });
 
-  //生命週期
+  watch(
+    () => goodsStore.filteredProducts,
+    (newVal) => {
+      console.log(goodsStore.filteredProducts);
+      console.log(goodsStore.filters.ProductType);
+    },
+  );
 </script>
 
 <style scoped>

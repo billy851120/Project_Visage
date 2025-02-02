@@ -4,9 +4,17 @@
       <ul class="goodsView_Breadcrumb">
         <li><router-link to="/">Home</router-link></li>
         <li>
-          <router-link to="/">All Products</router-link>
+          <router-link to="/shop/goodsList/AllProducts"
+            >All Products</router-link
+          >
         </li>
-        <li><router-link to="/">I'm a product</router-link></li>
+        <li>
+          <router-link
+            activeClass="active"
+            to="/"
+            >I'm a Product</router-link
+          >
+        </li>
       </ul>
       <ul class="goodsView_pagination">
         <li>
@@ -145,6 +153,7 @@
                     color: goods.color[0],
                     image: goods.defaultImage,
                     quantity: 1,
+                    loading: false,
                   })
                 "
               >
@@ -250,7 +259,7 @@
   };
   const goodsStore = useGoodsStore();
   const cartStore = useCartStore();
-  goodsStore.setId(Number(route.params.id));
+  // goodsStore.setId(Number(route.params.id));
   const selectedImg = ref(goodsStore.filteredProducts[0].defaultImage);
   const goods = ref(goodsStore.filteredProducts[0]);
 
@@ -261,7 +270,8 @@
   function clearColor(valur: any) {
     colorHover.value = "";
   }
-
+  console.log(goodsStore.filteredProducts);
+  console.log(goodsStore.filters.category);
   //生命週期
   onUnmounted(() => {
     goodsStore.clearAll2();
@@ -489,5 +499,10 @@
   .fade-enter-to {
     opacity: 1;
     position: static;
+  }
+
+  .goodsView_Breadcrumb li a.active {
+    color: #a6a6a6;
+    pointer-events: none;
   }
 </style>
