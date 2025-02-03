@@ -18,12 +18,21 @@
       </ul>
       <ul class="goodsView_pagination">
         <li>
-          <router-link to="/"
+          <router-link
+            :to="{
+              path: `/shop/goodsView/${goodsStore.filteredProducts[category].id}`,
+            }"
+            @click="prevItem"
             ><i class="fa-solid fa-chevron-left"></i> Prev</router-link
           >
         </li>
         <li>
-          <router-link to="/"
+          <h1>{{ category }}</h1>
+          <router-link
+            :to="{
+              path: `/shop/goodsView/${goodsStore.filteredProducts[category].id}`,
+            }"
+            @click="nextItem"
             >Next<i class="fa-solid fa-chevron-right"></i>
           </router-link>
         </li>
@@ -243,12 +252,13 @@
 
 <script setup lang="ts" name="">
   //引入
-  import { onUnmounted, ref } from "vue";
+  import { onUnmounted, ref, watch } from "vue";
   import { useRoute } from "vue-router";
   import ColorPickerView from "./components/ColorPickerView.vue";
   import type { CollapseModelValue } from "element-plus";
   import { useGoodsStore } from "@/stores/goodsStore";
   import { useCartStore } from "@/stores/cartStore";
+  import { el } from "element-plus/es/locales.mjs";
 
   //數據
   const route = useRoute();
@@ -259,7 +269,6 @@
   };
   const goodsStore = useGoodsStore();
   const cartStore = useCartStore();
-  // goodsStore.setId(Number(route.params.id));
   const selectedImg = ref(goodsStore.filteredProducts[0].defaultImage);
   const goods = ref(goodsStore.filteredProducts[0]);
 
@@ -271,10 +280,35 @@
     colorHover.value = "";
   }
   console.log(goodsStore.filteredProducts);
-  console.log(goodsStore.filters.category);
-  //生命週期
+  console.log(goodsStore.filters.ProductType);
+  const category = ref(
+    goodsStore.filteredProducts.findIndex((item) => {
+      console.log("測試");
+
+      return item.id === Number(route.params.id);
+    }),
+  );
+
+  function prevItem() {
+    category.value -= 1;
+  }
+  function nextItem() {
+    category.value += 1;
+  }
+  console.log(category.value);
   onUnmounted(() => {
     goodsStore.clearAll2();
+  });
+
+  //監視
+  watch(category, () => {
+    console.log(category.value);
+    if (category.value < 0) {
+      category.value = 0;
+    } else if (category.value > goodsStore.filteredProducts.length - 1) {
+      category.value = goodsStore.filteredProducts.length - 1;
+    }
+    goodsStore.setId(Number(route.params.id));
   });
 </script>
 <style scoped>
