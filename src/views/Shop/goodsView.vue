@@ -27,7 +27,6 @@
           >
         </li>
         <li>
-          <h1>{{ category }}</h1>
           <router-link
             :to="{
               path: `/shop/goodsView/${goodsStore.filteredProducts[category].id}`,
@@ -42,24 +41,33 @@
       <div class="goodsView_img">
         <transition-group
           class="img_box img_cursor"
+          :class="{ loadding: isLoading }"
           name="fade"
           tag="div"
         >
           <img
             key="view1"
-            v-if="selectedImg === goodsStore.filteredProducts[0].defaultImage"
+            v-if="
+              selectedImg === goodsStore.filteredProducts[category].defaultImage
+            "
             :src="selectedImg"
             alt=""
           />
           <img
             key="view2"
-            v-if="selectedImg === goodsStore.filteredProducts[0].hoverImage[0]"
+            v-if="
+              selectedImg ===
+              goodsStore.filteredProducts[category].hoverImage[0]
+            "
             :src="selectedImg"
             alt=""
           />
           <img
             key="view3"
-            v-if="selectedImg === goodsStore.filteredProducts[0].hoverImage[1]"
+            v-if="
+              selectedImg ===
+              goodsStore.filteredProducts[category].hoverImage[1]
+            "
             :src="selectedImg"
             alt=""
           />
@@ -70,21 +78,21 @@
             id="defaultImage"
             type="radio"
             name="list_img"
-            :value="goodsStore.filteredProducts[0].defaultImage"
+            :value="goodsStore.filteredProducts[category].defaultImage"
             v-model="selectedImg"
           />
           <input
             id="hoverImage_0"
             type="radio"
             name="list_img"
-            :value="goodsStore.filteredProducts[0].hoverImage[0]"
+            :value="goodsStore.filteredProducts[category].hoverImage[0]"
             v-model="selectedImg"
           />
           <input
             id="hoverImage_1"
             type="radio"
             name="list_img"
-            :value="goodsStore.filteredProducts[0].hoverImage[1]"
+            :value="goodsStore.filteredProducts[category].hoverImage[1]"
             v-model="selectedImg"
           />
 
@@ -92,7 +100,7 @@
             <button>
               <label for="defaultImage">
                 <img
-                  :src="goodsStore.filteredProducts[0].defaultImage"
+                  :src="goodsStore.filteredProducts[category].defaultImage"
                   alt=""
                 />
               </label>
@@ -103,7 +111,7 @@
             <button>
               <label for="hoverImage_0">
                 <img
-                  :src="goodsStore.filteredProducts[0].hoverImage[0]"
+                  :src="goodsStore.filteredProducts[category].hoverImage[0]"
                   alt=""
                 />
               </label>
@@ -113,7 +121,7 @@
             <button>
               <label for="hoverImage_1">
                 <img
-                  :src="goodsStore.filteredProducts[0].hoverImage[1]"
+                  :src="goodsStore.filteredProducts[category].hoverImage[1]"
                   alt=""
                 />
               </label>
@@ -129,7 +137,7 @@
       <div class="goodsView_info">
         <div class="title mb-3">
           <h1>I'm a Product</h1>
-          <p>SKU: {{ route.params.id }}</p>
+          <p>SKU: {{ goodsStore.filteredProducts[category].id }}</p>
         </div>
         <div class="price mb-3">
           <p>$10.00</p>
@@ -137,7 +145,7 @@
         <div class="color mb-3">
           <p class="mb-2">Color: Black</p>
           <ColorPickerView
-            v-for="color in goodsStore.filteredProducts[0].color"
+            v-for="color in goodsStore.filteredProducts[category].color"
             :sendColor="getColor"
             :clearColor="clearColor"
             :colorValue="color"
@@ -258,9 +266,9 @@
   import type { CollapseModelValue } from "element-plus";
   import { useGoodsStore } from "@/stores/goodsStore";
   import { useCartStore } from "@/stores/cartStore";
-  import { el } from "element-plus/es/locales.mjs";
 
   //數據
+  const isLoading = ref(false);
   const route = useRoute();
   const colorHover = ref();
   const activeNames = ref(["1"]);
@@ -269,8 +277,15 @@
   };
   const goodsStore = useGoodsStore();
   const cartStore = useCartStore();
-  const selectedImg = ref(goodsStore.filteredProducts[0].defaultImage);
-  const goods = ref(goodsStore.filteredProducts[0]);
+  const category = ref(
+    goodsStore.filteredProducts.findIndex((item) => {
+      return item.id === Number(route.params.id);
+    }),
+  );
+  let selectedImg = ref(
+    goodsStore.filteredProducts[category.value].defaultImage,
+  );
+  const goods = ref(goodsStore.filteredProducts[category.value]);
 
   //方法
   function getColor(value: any) {
@@ -279,39 +294,48 @@
   function clearColor(valur: any) {
     colorHover.value = "";
   }
-  console.log(goodsStore.filteredProducts);
-  console.log(goodsStore.filters.ProductType);
-  const category = ref(
-    goodsStore.filteredProducts.findIndex((item) => {
-      console.log("測試");
-
-      return item.id === Number(route.params.id);
-    }),
-  );
 
   function prevItem() {
-    category.value -= 1;
+    if (isLoading.value) return;
+    if (category.value <= 0) {
+      category.value = 0;
+    } else {
+      category.value -= 1;
+      isLoading.value = true;
+    }
+
+    setTimeout(() => {
+      isLoading.value = false;
+    }, 1000);
   }
   function nextItem() {
-    category.value += 1;
+    if (isLoading.value) return;
+    if (category.value >= goodsStore.filteredProducts.length - 1) {
+      category.value = goodsStore.filteredProducts.length - 1;
+    } else {
+      category.value += 1;
+      isLoading.value = true;
+    }
+
+    setTimeout(() => {
+      isLoading.value = false;
+    }, 1000);
   }
-  console.log(category.value);
   onUnmounted(() => {
     goodsStore.clearAll2();
   });
 
   //監視
   watch(category, () => {
-    console.log(category.value);
-    if (category.value < 0) {
-      category.value = 0;
-    } else if (category.value > goodsStore.filteredProducts.length - 1) {
-      category.value = goodsStore.filteredProducts.length - 1;
-    }
-    goodsStore.setId(Number(route.params.id));
+    selectedImg.value =
+      goodsStore.filteredProducts[category.value].defaultImage;
   });
 </script>
 <style scoped>
+  .loadding {
+    filter: blur(5px);
+    transition: all 0;
+  }
   .goodsView_info .submit .submit_top {
     display: flex;
     gap: 0 10px;
