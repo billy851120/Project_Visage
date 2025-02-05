@@ -6,9 +6,11 @@
   >
     <input
       type="radio"
-      name="colorName"
-      value="colorName"
+      :name="colorValue"
+      :value="colorValue"
       id=""
+      required
+      v-model="checkedColor"
     />
     <span class="colorPick"></span>
   </label>
@@ -20,8 +22,8 @@
   defineProps(["colorName", "colorValue", "sendColor", "clearColor"]);
 
   //數據
+  const checkedColor = defineModel();
   const goodsStore = useGoodsStore();
-  // const checkedColor = defineModel();
 
   //方法
 </script>

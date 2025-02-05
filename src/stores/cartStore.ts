@@ -32,18 +32,19 @@ export const useCartStore = defineStore("cart", {
       price: Number;
       color: String;
       image: String;
-      quantity: Number;
+      quantity: number;
       loading: Boolean;
     }) {
       const item = this.cartItems.find((element) => element.id === products.id);
       if (item) {
         if ("quantity" in item && typeof item.quantity === "number") {
-          item.quantity++;
+          item.quantity += products.quantity;
           console.log("數量++");
         }
       } else {
         console.log("進購物車");
-        this.cartItems.push({ ...products, quantity: 1 });
+        console.log(this.cartItems);
+        this.cartItems.push({ ...products });
       }
     },
     removeFromCart(id: Number) {

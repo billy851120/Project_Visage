@@ -143,40 +143,48 @@
           <p>$10.00</p>
         </div>
         <div class="color mb-3">
-          <p class="mb-2">Color: Black</p>
+          <p
+            v-if="selectedColor[0]"
+            class="mb-2"
+          >
+            Color:
+            {{ selectedColor[0]?.toLocaleUpperCase() + selectedColor.slice(1) }}
+          </p>
+          <p
+            v-else
+            class="mb-2"
+          >
+            Color:
+          </p>
           <ColorPickerView
             v-for="color in goodsStore.filteredProducts[category].color"
             :sendColor="getColor"
             :clearColor="clearColor"
             :colorValue="color"
+            v-model="selectedColor"
           ></ColorPickerView>
         </div>
         <div class="Quantity mb-4">
           <p class="mb-2">Quantity</p>
           <input
             type="number"
-            value="1"
+            v-model="Quantity"
           />
         </div>
         <div class="submit">
+          <div>
+            <Loading></Loading>
+          </div>
           <div class="submit_top mb-3">
             <div class="addCart">
               <button
-                @click="
-                  cartStore.addToCart({
-                    id: goods.id,
-                    name: goods.name,
-                    price: goods.price,
-                    color: goods.color[0],
-                    image: goods.defaultImage,
-                    quantity: 1,
-                    loading: false,
-                  })
-                "
+                v-loading="isLoading2"
+                @click="addToCart()"
               >
                 Add to Cart
               </button>
             </div>
+
             <div class="like">
               <button>
                 <i class="fa-regular fa-heart"></i>
@@ -260,21 +268,26 @@
 
 <script setup lang="ts" name="">
   //引入
+  import { useGoodsStore } from "@/stores/goodsStore";
+  import { useCartStore } from "@/stores/cartStore";
+  import type { CollapseModelValue } from "element-plus";
   import { onUnmounted, ref, watch } from "vue";
   import { useRoute } from "vue-router";
   import ColorPickerView from "./components/ColorPickerView.vue";
-  import type { CollapseModelValue } from "element-plus";
-  import { useGoodsStore } from "@/stores/goodsStore";
-  import { useCartStore } from "@/stores/cartStore";
+  import Loading from "./components/Loading.vue";
 
   //數據
   const isLoading = ref(false);
+  const isLoading2 = ref(false);
+  const selectedColor = ref("");
+  const Quantity = ref(1);
   const route = useRoute();
   const colorHover = ref();
   const activeNames = ref(["1"]);
   const handleChange = (val: CollapseModelValue) => {
     // console.log(val);
   };
+
   const goodsStore = useGoodsStore();
   const cartStore = useCartStore();
   const category = ref(
@@ -293,6 +306,28 @@
   }
   function clearColor(valur: any) {
     colorHover.value = "";
+  }
+  function addToCart() {
+    if (selectedColor.value) {
+      if (isLoading2.value) return;
+      isLoading2.value = true;
+
+      setTimeout(() => {
+        cartStore.addToCart({
+          id: goods.value.id,
+          name: goods.value.name,
+          price: goods.value.price,
+          color: selectedColor.value,
+          image: goods.value.defaultImage,
+          quantity: Quantity.value,
+          loading: false,
+        });
+        isLoading2.value = false;
+      }, 1500);
+    } else {
+      alert("請選擇顏色");
+      return;
+    }
   }
 
   function prevItem() {
@@ -330,11 +365,11 @@
     selectedImg.value =
       goodsStore.filteredProducts[category.value].defaultImage;
   });
+  console.log(cartStore.cartItems);
 </script>
 <style scoped>
   .loadding {
-    filter: blur(5px);
-    transition: all 0;
+    filter: blur(4px);
   }
   .goodsView_info .submit .submit_top {
     display: flex;
