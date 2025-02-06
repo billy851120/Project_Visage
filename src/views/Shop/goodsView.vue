@@ -1,5 +1,6 @@
 <template>
   <div class="goodsView_content">
+    <Sidebar v-model="isSidebarOpen"></Sidebar>
     <div class="goodsView_nav mb-5">
       <ul class="goodsView_Breadcrumb">
         <li><router-link to="/">Home</router-link></li>
@@ -172,16 +173,12 @@
           />
         </div>
         <div class="submit">
-          <div>
-            <Loading></Loading>
-          </div>
+          <div></div>
           <div class="submit_top mb-3">
             <div class="addCart">
-              <button
-                v-loading="isLoading2"
-                @click="addToCart()"
-              >
-                Add to Cart
+              <button @click="addToCart()">
+                <Loading v-if="isLoading2"></Loading>
+                <span v-else> Add to Cart</span>
               </button>
             </div>
 
@@ -275,10 +272,12 @@
   import { useRoute } from "vue-router";
   import ColorPickerView from "./components/ColorPickerView.vue";
   import Loading from "./components/Loading.vue";
+  import Sidebar from "./components/Sidebar.vue";
 
   //數據
   const isLoading = ref(false);
   const isLoading2 = ref(false);
+  const isSidebarOpen = ref(false);
   const selectedColor = ref("");
   const Quantity = ref(1);
   const route = useRoute();
@@ -323,6 +322,7 @@
           loading: false,
         });
         isLoading2.value = false;
+        isSidebarOpen.value = true;
       }, 1500);
     } else {
       alert("請選擇顏色");
