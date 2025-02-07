@@ -9,7 +9,18 @@
       v-if="model"
       class="sidebar"
     >
-      我是側邊欄
+      <div class="title">
+        <span>Cart <small>(1 items)</small> </span>
+        <button
+          class="close"
+          @click="close"
+        >
+          <el-icon><Close /></el-icon>
+        </button>
+      </div>
+      <div class="items">
+        <SidebarItems></SidebarItems>
+      </div>
     </div>
   </div>
 </template>
@@ -17,6 +28,7 @@
 <script setup lang="ts" name="">
   //引入
   import { ref, defineProps } from "vue";
+  import SidebarItems from "./SidebarItems.vue";
   //數據
   const model = defineModel();
   //方法
@@ -26,6 +38,28 @@
 </script>
 
 <style scoped>
+  .title {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #000;
+    padding-bottom: 20px;
+  }
+  .title span {
+    font-size: 1.2rem;
+    font-weight: 500;
+    display: inline-block;
+    margin-right: auto;
+  }
+
+  .close {
+    display: inline-block;
+    border: none;
+    background: transparent;
+    font-size: 1.5rem;
+  }
+  .close i {
+    transform: translateY(15%);
+  }
   .overlay {
     position: fixed;
     top: 0;
@@ -37,6 +71,8 @@
   }
 
   .sidebar {
+    box-sizing: border-box;
+    padding: 20px 18px;
     position: fixed;
     top: 0;
     right: 0;
