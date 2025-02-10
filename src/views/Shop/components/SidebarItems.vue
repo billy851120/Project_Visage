@@ -1,30 +1,36 @@
 <template>
-  <div class="items">
+  <div
+    v-for="item in CartStore.cartItems"
+    class="items"
+  >
     <div class="content">
       <div class="img">
         <img
-          src="@/assets/imgs/84770f_2a6c30317dfa4ce993da3dda8fa7cb15~mv2.webp"
+          :src="item.image as string"
           alt=""
         />
       </div>
       <div class="info">
         <div class="txt me-auto">
-          <div class="title">I'm a Product</div>
-          <div class="price">$10.00</div>
-          <div class="color">Color: Orange</div>
+          <div class="title">{{ item.name }}</div>
+          <div class="price">${{ item.price.toFixed(2) }}</div>
+          <div class="color">
+            Color: {{ item.color[0].toUpperCase() + item.color.slice(1) }}
+          </div>
         </div>
         <div class="counter">
           <div class="count">
-            <button>
+            <button @click="sub(item)">
               <el-icon><Minus /></el-icon>
             </button>
             <input
               type="number"
               name=""
               id=""
-              v-model="count"
+              :value="item.quantity"
+              readonly
             />
-            <button>
+            <button @click="add(item)">
               <el-icon><Plus /></el-icon>
             </button>
           </div>
@@ -40,13 +46,26 @@
 
 <script setup lang="ts" name="">
   import { ref } from "vue";
+  import { useCartStore } from "@/stores/cartStore";
 
   //引入
 
   //數據
-  const count = ref("1");
+  const CartStore = useCartStore();
+  const minValue = 1;
+  const maxValue = 99;
 
   //方法
+  function sub(item: any) {
+    if (Number(item.quantity) > minValue) {
+      item.quantity--;
+    }
+  }
+  function add(item: any) {
+    if (Number(item.quantity) < maxValue) {
+      item.quantity++;
+    }
+  }
 </script>
 
 <style scoped>
@@ -68,6 +87,9 @@
     width: 100%;
     display: flex;
   }
+  .info {
+    flex: 1;
+  }
 
   .info .txt .title {
     font-size: 0.9rem;
@@ -79,6 +101,9 @@
   }
   .counter {
     display: flex;
+    overflow: hidden;
+    align-items: center;
+    width: 100%;
   }
   .count input[type="number"]::-webkit-inner-spin-button,
   .count input[type="number"]::-webkit-outer-spin-button {
@@ -87,15 +112,22 @@
   }
   .count {
     border: 1px solid rgba(0, 0, 0, 0.6);
+    display: flex;
     align-items: center;
+    margin-right: auto;
   }
   .count input[type="number"] {
-    width: 100px;
+    width: 22px;
     text-align: center;
     border: none;
     font-size: 0.8rem;
-    transform: translateY(2px);
+    /* transform: translateY(0px); */
     outline: none;
     -moz-appearance: textfield;
+    padding: 10px 0;
+  }
+  .count button {
+    background: transparent;
+    border: none;
   }
 </style>
