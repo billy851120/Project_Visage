@@ -10,7 +10,9 @@
       class="sidebar"
     >
       <div class="title">
-        <span>Cart <small>(1 items)</small> </span>
+        <span
+          >Cart <small>({{ cartStore.totalQuantity }} items)</small>
+        </span>
         <button
           class="close"
           @click="close"
@@ -21,6 +23,24 @@
       <div class="items">
         <SidebarItems></SidebarItems>
       </div>
+      <div class="sub mt-auto">
+        <div class="subTotal">
+          <div class="d-flex mb-3">
+            <span class="d-inline-block flex-grow-1">Subtotal</span>
+            <span class="d-inline-block">$310.00</span>
+          </div>
+          <h6>Taxes and shipping are calculated at checkout.</h6>
+        </div>
+        <div class="checkout mb-3">
+          <button class="w-100">Checkout</button>
+          <button class="w-100">
+            <router-link to="/cart">View Cart</router-link>
+          </button>
+        </div>
+        <div class="Secure text-center">
+          <p><i class="fa-solid fa-lock me-2"></i>Secure Checkout</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -29,8 +49,10 @@
   //引入
   import { ref, defineProps } from "vue";
   import SidebarItems from "./SidebarItems.vue";
+  import { useCartStore } from "@/stores/cartStore";
   //數據
   const model = defineModel();
+  const cartStore = useCartStore();
   //方法
   const close = () => {
     model.value = false;
@@ -80,5 +102,40 @@
     height: 100%;
     z-index: 200;
     background-color: #fff;
+    display: flex;
+    flex-direction: column;
+  }
+  .sub {
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+  }
+  .sub .subTotal {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+  }
+  .sub .subTotal h6 {
+    font-size: 0.8rem;
+    color: #555555;
+  }
+  .checkout button {
+    padding: 12px 0;
+    border: none;
+    font-size: 0.88rem;
+  }
+  .checkout button:nth-child(1) {
+    background-color: #0a1fdb;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  .checkout button:nth-child(2) {
+    background-color: #fff;
+    border: 1px solid #0a1fdb;
+  }
+  .checkout button:nth-child(2) a {
+    text-decoration: none;
+    color: #0a1fdb;
+  }
+  .Secure {
+    font-size: 0.85rem;
   }
 </style>

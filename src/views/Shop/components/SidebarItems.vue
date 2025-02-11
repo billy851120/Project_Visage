@@ -93,6 +93,13 @@
 
   .info .txt .title {
     font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+  .info .txt .price {
+    margin-bottom: 7px;
+  }
+  .info .txt .color {
+    margin-bottom: 7px;
   }
   .info .txt {
     font-size: 0.8rem;
@@ -124,10 +131,20 @@
     /* transform: translateY(0px); */
     outline: none;
     -moz-appearance: textfield;
-    padding: 10px 0;
+    padding: 8px 0;
   }
   .count button {
     background: transparent;
     border: none;
+  }
+  .count button i {
+    transform: translateY(2px);
+  }
+  .counter .total {
+    font-size: 0.9rem;
+  }
+  .del {
+    font-size: 1.2rem;
+    padding-right: 5px;
   }
 </style>

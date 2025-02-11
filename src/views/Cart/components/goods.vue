@@ -36,7 +36,7 @@
       </div>
       <div class="col-1 del">
         <button @click="del(item)">
-          <el-icon><DeleteFilled /></el-icon>
+          <el-icon><Delete /></el-icon>
         </button>
       </div>
     </div>
