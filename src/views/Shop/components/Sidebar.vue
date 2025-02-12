@@ -20,14 +20,16 @@
           <el-icon><Close /></el-icon>
         </button>
       </div>
-      <div class="items">
+      <div class="items flex-grow-1">
         <SidebarItems></SidebarItems>
       </div>
-      <div class="sub mt-auto">
+      <div class="sub">
         <div class="subTotal">
           <div class="d-flex mb-3">
             <span class="d-inline-block flex-grow-1">Subtotal</span>
-            <span class="d-inline-block">$310.00</span>
+            <span class="d-inline-block"
+              >${{ cartStore.totalPrice.toFixed(2) }}</span
+            >
           </div>
           <h6>Taxes and shipping are calculated at checkout.</h6>
         </div>
@@ -137,5 +139,8 @@
   }
   .Secure {
     font-size: 0.85rem;
+  }
+  .items {
+    overflow: auto;
   }
 </style>

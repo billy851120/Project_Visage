@@ -1,6 +1,7 @@
 <template>
   <div
     v-for="item in CartStore.cartItems"
+    v-loading="item.loading"
     class="items"
   >
     <div class="content">
@@ -34,11 +35,16 @@
               <el-icon><Plus /></el-icon>
             </button>
           </div>
-          <div class="total">$10.00</div>
+          <div class="total">
+            ${{ (Number(item.quantity) * Number(item.price)).toFixed(2) }}
+          </div>
         </div>
       </div>
     </div>
-    <div class="del">
+    <div
+      class="del"
+      @click="del(item)"
+    >
       <el-icon><Delete /></el-icon>
     </div>
   </div>
@@ -65,6 +71,13 @@
     if (Number(item.quantity) < maxValue) {
       item.quantity++;
     }
+  }
+  function del(item: any) {
+    item.loading = true;
+    setTimeout(() => {
+      CartStore.removeFromCart(item.id);
+      item.loading = false;
+    }, 2000);
   }
 </script>
 
@@ -146,5 +159,6 @@
   .del {
     font-size: 1.2rem;
     padding-right: 5px;
+    cursor: pointer;
   }
 </style>

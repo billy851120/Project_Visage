@@ -29,7 +29,9 @@
         <div class="Subtotal">
           <div class="d-flex mb-3">
             <span class="d-inline-block flex-grow-1">Subtotal</span>
-            <span class="d-inline-block">$6.00</span>
+            <span class="d-inline-block"
+              >${{ cartStore.totalPrice.toFixed(2) }}</span
+            >
           </div>
           <div class="d-flex mb-2">
             <span class="d-inline-block flex-grow-1">Delivery </span>
@@ -41,7 +43,9 @@
         </div>
         <div class="total d-flex mb-3">
           <span class="d-inline-block flex-grow-1">Total</span>
-          <span class="d-inline-block">$6.00</span>
+          <span class="d-inline-block"
+            >${{ cartStore.totalPrice.toFixed(2) }}</span
+          >
         </div>
         <div class="checkOut">
           <button class="w-100">Checkout</button>
@@ -55,8 +59,10 @@
 <script setup lang="ts" name="">
   //引入
   import goods from "./components/goods.vue";
+  import { useCartStore } from "@/stores/cartStore";
 
   //數據
+  const cartStore = useCartStore();
 
   //方法
 </script>

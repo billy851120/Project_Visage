@@ -1,3 +1,4 @@
+import { sum } from "element-plus/es/components/table-v2/src/utils.mjs";
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
@@ -24,6 +25,12 @@ export const useCartStore = defineStore("cart", {
         0,
       );
     },
+    totalPrice(state) {
+      return state.cartItems.reduce(
+        (sum, item) => sum + Number(item.price) * Number(item.quantity),
+        0,
+      );
+    },
   },
   actions: {
     addToCart(products: {
@@ -35,7 +42,10 @@ export const useCartStore = defineStore("cart", {
       quantity: number;
       loading: Boolean;
     }) {
-      const item = this.cartItems.find((element) => element.id === products.id);
+      const item = this.cartItems.find(
+        (element) =>
+          element.id === products.id && element.color === products.color,
+      );
       if (item) {
         if ("quantity" in item && typeof item.quantity === "number") {
           item.quantity += products.quantity;
@@ -48,7 +58,7 @@ export const useCartStore = defineStore("cart", {
       }
     },
     removeFromCart(id: Number) {
-      this.cartItems = this.cartItems.filter((item) => item.id !== id);
+      this.cartItems = this.cartItems.filter((item) => item.id !== id && item);
     },
   },
 });

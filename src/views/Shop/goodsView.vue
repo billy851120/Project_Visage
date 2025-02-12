@@ -19,22 +19,14 @@
       </ul>
       <ul class="goodsView_pagination">
         <li>
-          <router-link
-            :to="{
-              path: `/shop/goodsView/${goodsStore.filteredProducts[category].id}`,
-            }"
-            @click="prevItem"
-            ><i class="fa-solid fa-chevron-left"></i> Prev</router-link
-          >
+          <button @click="prevItem">
+            <i class="fa-solid fa-chevron-left"></i> Prev
+          </button>
         </li>
         <li>
-          <router-link
-            :to="{
-              path: `/shop/goodsView/${goodsStore.filteredProducts[category].id}`,
-            }"
-            @click="nextItem"
-            >Next<i class="fa-solid fa-chevron-right"></i>
-          </router-link>
+          <button @click="nextItem">
+            Next<i class="fa-solid fa-chevron-right"></i>
+          </button>
         </li>
       </ul>
     </div>
@@ -273,6 +265,7 @@
   import ColorPickerView from "./components/ColorPickerView.vue";
   import Loading from "./components/Loading.vue";
   import Sidebar from "./components/Sidebar.vue";
+  import router from "@/router";
 
   //數據
   const isLoading = ref(false);
@@ -329,13 +322,23 @@
       return;
     }
   }
+  console.log(goodsStore.filteredProducts[category.value]);
 
   function prevItem() {
     if (isLoading.value) return;
     if (category.value <= 0) {
       category.value = 0;
+      router.push(
+        `/shop/goodsView/${goodsStore.filteredProducts[category.value].id}`,
+      );
+      selectedColor.value = "";
     } else {
       category.value -= 1;
+      router.push(
+        `/shop/goodsView/${goodsStore.filteredProducts[category.value].id}`,
+      );
+      selectedColor.value = "";
+
       isLoading.value = true;
     }
 
@@ -347,8 +350,17 @@
     if (isLoading.value) return;
     if (category.value >= goodsStore.filteredProducts.length - 1) {
       category.value = goodsStore.filteredProducts.length - 1;
+      router.push(
+        `/shop/goodsView/${goodsStore.filteredProducts[category.value].id}`,
+      );
+      selectedColor.value = "";
     } else {
       category.value += 1;
+      router.push(
+        `/shop/goodsView/${goodsStore.filteredProducts[category.value].id}`,
+      );
+      selectedColor.value = "";
+
       isLoading.value = true;
     }
 
@@ -364,6 +376,7 @@
   watch(category, () => {
     selectedImg.value =
       goodsStore.filteredProducts[category.value].defaultImage;
+    goods.value = goodsStore.filteredProducts[category.value];
   });
   console.log(cartStore.cartItems);
 </script>
@@ -518,9 +531,11 @@
     content: "|";
     margin: 0 10px;
   }
-  .goodsView_pagination li a {
+  .goodsView_pagination li button {
     color: #000;
     text-decoration: none;
+    border: none;
+    background: transparent;
   }
   .goodsView_content {
     margin: 50px auto;
