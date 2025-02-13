@@ -13,10 +13,8 @@
 <script setup lang="ts" name="">
   //引入
   import HomeBanner from "./components/HomeBanner.vue";
-  import HomeCategory from "./components/HomeCategory.vue";
   import HomeHot from "./components/HomeHot.vue";
   import HomeOurMasks from "./components/HomeOurMasks.vue";
-  import HomeProduct from "./components/HomeProduct.vue";
   import HomeStandFor from "./components/HomeStandFor.vue";
   import HomeTagUs from "./components/HomeTagUs.vue";
 

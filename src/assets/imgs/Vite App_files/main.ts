@@ -1,9 +1,9 @@
 import "/src/styles/all.css";
 import "/node_modules/normalize.css/normalize.css";
-import { createApp } from "/node_modules/.vite/deps/vue.js?v=6d29894d";
-import { createPinia } from "/node_modules/.vite/deps/pinia.js?v=6d29894d";
-import router from "/src/router/index.ts?t=1732507597471";
-import App from "/src/App.vue";
+import { createApp } from "vue";
+import { createPinia } from "pinia";
+import router from "@/router";
+import App from "@/App.vue";
 const app = createApp(App);
 app.use(createPinia());
 app.use(router);
