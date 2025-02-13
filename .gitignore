@@ -1,5 +1,6 @@
 # 忽略 node_modules 資料夾
 node_modules/
+.cache/
 
 # 忽略編譯後的 dist 資料夾
 dist/
