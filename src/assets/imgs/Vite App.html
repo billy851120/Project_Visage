@@ -1,0 +1,1162 @@
+<!doctype html>
+<!-- saved from url=(0022)http://localhost:5173/ -->
+<html
+  lang=""
+  style="
+    --vueuse-safe-area-top: env(safe-area-inset-top, 0px);
+    --vueuse-safe-area-right: env(safe-area-inset-right, 0px);
+    --vueuse-safe-area-bottom: env(safe-area-inset-bottom, 0px);
+    --vueuse-safe-area-left: env(safe-area-inset-left, 0px);
+  "
+>
+  <head>
+    <meta
+      http-equiv="Content-Type"
+      content="text/html; charset=UTF-8"
+    />
+    <script
+      type="module"
+      src="./Vite App_files/virtual_vue-devtools-path_overlay.js.下載"
+    ></script>
+    <script
+      type="module"
+      src="./Vite App_files/virtual_vue-inspector-path_load.js.下載"
+    ></script>
+
+    <script
+      type="module"
+      src="./Vite App_files/client"
+    ></script>
+
+    <!-- <link rel="stylesheet" href="./src/styles/fontawesome-free-6.6.0-web/css/all.css"> -->
+    <link
+      rel="stylesheet"
+      href="./Vite App_files/fontawesome.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./Vite App_files/brands.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./Vite App_files/solid.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./Vite App_files/bootstrap.css"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Vite App</title>
+    <link
+      rel="stylesheet"
+      href="./Vite App_files/devtools-overlay.css"
+    />
+    <style
+      type="text/css"
+      data-vite-dev-id="C:/Users/billy/OneDrive/文件/GitHub/Visage/node_modules/vite-plugin-vue-inspector/src/Overlay.vue?vue&amp;type=style&amp;index=0&amp;scoped=31d1379f&amp;lang.css"
+    >
+      .vue-inspector-container[data-v-31d1379f] {
+        cursor: pointer;
+        position: fixed;
+        text-align: center;
+        z-index: 2147483647;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .vue-inspector-card[data-v-31d1379f] {
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 5px 8px;
+        border-radius: 4px;
+        text-align: left;
+        color: #e9e9e9;
+        font-size: 14px;
+        background-color: #42b883;
+        box-shadow:
+          0 1px 3px 0 rgba(0, 0, 0, 0.1),
+          0 1px 2px -1px rgba(0, 0, 0, 0.1);
+      }
+      .vue-inspector-card .tip[data-v-31d1379f] {
+        font-size: 11px;
+        opacity: 0.7;
+      }
+      .vue-inspector-banner[data-v-31d1379f] {
+        display: none;
+        position: absolute;
+        margin: 0;
+        width: 260px;
+        text-decoration: none;
+      }
+      .vue-inspector-container:hover .vue-inspector-banner[data-v-31d1379f] {
+        display: block;
+      }
+      .vue-inspector-container--disabled:hover
+        .vue-inspector-banner[data-v-31d1379f] {
+        display: none;
+      }
+      .vue-inspector-floats[data-v-31d1379f] {
+        z-index: 2147483647;
+        position: fixed;
+        transform: translateX(-50%);
+        pointer-events: none;
+      }
+      .vue-inspector-size-indicator[data-v-31d1379f] {
+        z-index: 2147483646;
+        position: fixed;
+        background-color: #42b88325;
+        border: 1px solid #42b88350;
+        border-radius: 5px;
+        pointer-events: none;
+      }
+      .vue-inspector-animated[data-v-31d1379f] {
+        transition: all 0.1s ease-in;
+      }
+      @media (prefers-reduced-motion) {
+        .vue-inspector-animated[data-v-31d1379f] {
+          transition: none !important;
+        }
+      }
+    </style>
+    <style
+      type="text/css"
+      data-vite-dev-id="C:/Users/billy/OneDrive/文件/GitHub/Visage/src/styles/all.css"
+    >
+      .textColor_1 {
+        color: #000;
+      }
+      .textColor_2 {
+        color: #0a1fdb;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        font-weight: normal;
+      }
+      ol,
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      body {
+        padding: 0 40px;
+        min-height: 100vh;
+        background-color: #ffffff;
+      }
+      p {
+        margin: 0;
+      }
+    </style>
+    <style
+      type="text/css"
+      data-vite-dev-id="C:/Users/billy/OneDrive/文件/GitHub/Visage/node_modules/normalize.css/normalize.css"
+    >
+      /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+
+      /* Document
+   ========================================================================== */
+
+      /**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+
+      html {
+        line-height: 1.15; /* 1 */
+        -webkit-text-size-adjust: 100%; /* 2 */
+      }
+
+      /* Sections
+   ========================================================================== */
+
+      /**
+ * Remove the margin in all browsers.
+ */
+
+      body {
+        margin: 0;
+      }
+
+      /**
+ * Render the `main` element consistently in IE.
+ */
+
+      main {
+        display: block;
+      }
+
+      /**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+
+      h1 {
+        font-size: 2em;
+        margin: 0.67em 0;
+      }
+
+      /* Grouping content
+   ========================================================================== */
+
+      /**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+
+      hr {
+        box-sizing: content-box; /* 1 */
+        height: 0; /* 1 */
+        overflow: visible; /* 2 */
+      }
+
+      /**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+      pre {
+        font-family: monospace, monospace; /* 1 */
+        font-size: 1em; /* 2 */
+      }
+
+      /* Text-level semantics
+   ========================================================================== */
+
+      /**
+ * Remove the gray background on active links in IE 10.
+ */
+
+      a {
+        background-color: transparent;
+      }
+
+      /**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+
+      abbr[title] {
+        border-bottom: none; /* 1 */
+        text-decoration: underline; /* 2 */
+        text-decoration: underline dotted; /* 2 */
+      }
+
+      /**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+
+      b,
+      strong {
+        font-weight: bolder;
+      }
+
+      /**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+      code,
+      kbd,
+      samp {
+        font-family: monospace, monospace; /* 1 */
+        font-size: 1em; /* 2 */
+      }
+
+      /**
+ * Add the correct font size in all browsers.
+ */
+
+      small {
+        font-size: 80%;
+      }
+
+      /**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+
+      sub,
+      sup {
+        font-size: 75%;
+        line-height: 0;
+        position: relative;
+        vertical-align: baseline;
+      }
+
+      sub {
+        bottom: -0.25em;
+      }
+
+      sup {
+        top: -0.5em;
+      }
+
+      /* Embedded content
+   ========================================================================== */
+
+      /**
+ * Remove the border on images inside links in IE 10.
+ */
+
+      img {
+        border-style: none;
+      }
+
+      /* Forms
+   ========================================================================== */
+
+      /**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ */
+
+      button,
+      input,
+      optgroup,
+      select,
+      textarea {
+        font-family: inherit; /* 1 */
+        font-size: 100%; /* 1 */
+        line-height: 1.15; /* 1 */
+        margin: 0; /* 2 */
+      }
+
+      /**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+
+      button,
+      input {
+        /* 1 */
+        overflow: visible;
+      }
+
+      /**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+
+      button,
+      select {
+        /* 1 */
+        text-transform: none;
+      }
+
+      /**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
+
+      button,
+      [type="button"],
+      [type="reset"],
+      [type="submit"] {
+        -webkit-appearance: button;
+      }
+
+      /**
+ * Remove the inner border and padding in Firefox.
+ */
+
+      button::-moz-focus-inner,
+      [type="button"]::-moz-focus-inner,
+      [type="reset"]::-moz-focus-inner,
+      [type="submit"]::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+      }
+
+      /**
+ * Restore the focus styles unset by the previous rule.
+ */
+
+      button:-moz-focusring,
+      [type="button"]:-moz-focusring,
+      [type="reset"]:-moz-focusring,
+      [type="submit"]:-moz-focusring {
+        outline: 1px dotted ButtonText;
+      }
+
+      /**
+ * Correct the padding in Firefox.
+ */
+
+      fieldset {
+        padding: 0.35em 0.75em 0.625em;
+      }
+
+      /**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+
+      legend {
+        box-sizing: border-box; /* 1 */
+        color: inherit; /* 2 */
+        display: table; /* 1 */
+        max-width: 100%; /* 1 */
+        padding: 0; /* 3 */
+        white-space: normal; /* 1 */
+      }
+
+      /**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+
+      progress {
+        vertical-align: baseline;
+      }
+
+      /**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+
+      textarea {
+        overflow: auto;
+      }
+
+      /**
+ * 1. Add the correct box sizing in IE 10.
+ * 2. Remove the padding in IE 10.
+ */
+
+      [type="checkbox"],
+      [type="radio"] {
+        box-sizing: border-box; /* 1 */
+        padding: 0; /* 2 */
+      }
+
+      /**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+
+      [type="number"]::-webkit-inner-spin-button,
+      [type="number"]::-webkit-outer-spin-button {
+        height: auto;
+      }
+
+      /**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+
+      [type="search"] {
+        -webkit-appearance: textfield; /* 1 */
+        outline-offset: -2px; /* 2 */
+      }
+
+      /**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+
+      [type="search"]::-webkit-search-decoration {
+        -webkit-appearance: none;
+      }
+
+      /**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+
+      ::-webkit-file-upload-button {
+        -webkit-appearance: button; /* 1 */
+        font: inherit; /* 2 */
+      }
+
+      /* Interactive
+   ========================================================================== */
+
+      /*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+
+      details {
+        display: block;
+      }
+
+      /*
+ * Add the correct display in all browsers.
+ */
+
+      summary {
+        display: list-item;
+      }
+
+      /* Misc
+   ========================================================================== */
+
+      /**
+ * Add the correct display in IE 10+.
+ */
+
+      template {
+        display: none;
+      }
+
+      /**
+ * Add the correct display in IE 10.
+ */
+
+      [hidden] {
+        display: none;
+      }
+    </style>
+    <style
+      type="text/css"
+      data-vite-dev-id="C:/Users/billy/OneDrive/文件/GitHub/Visage/src/views/Layout/components/LayoutNav.vue?vue&amp;type=style&amp;index=0&amp;scoped=fcf596ad&amp;lang.css"
+    >
+      .block[data-v-fcf596ad] {
+        padding: 55px 0;
+      }
+      .Visage_navbar[data-v-fcf596ad] {
+        z-index: 99;
+        background: #ffffff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 34px 40px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+      }
+      .Visage_navbar.visible[data-v-fcf596ad] {
+        transform: none;
+        opacity: 1;
+        transition:
+          opacity 0.1s,
+          transform 0.9s ease-in-out;
+      }
+      .Visage_navbar.close[data-v-fcf596ad] {
+        z-index: 99;
+        display: flex;
+        /* visibility: hidden; */
+        opacity: 0;
+        transition: opacity 0.4s 0.2s;
+        pointer-events: none;
+      }
+      .nav_link ul[data-v-fcf596ad] {
+        display: flex;
+      }
+      .nav_link a[data-v-fcf596ad] {
+        padding: 12px 13px;
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+      .nav_link a[data-v-fcf596ad]:hover {
+        transition: all 0.3s;
+        color: #0a1fdb;
+      }
+      .logo[data-v-fcf596ad] {
+        padding-left: 190px;
+      }
+      .logo a[data-v-fcf596ad] {
+        text-decoration: none;
+        font-size: 1.5rem;
+        letter-spacing: 6px;
+      }
+      .search[data-v-fcf596ad] {
+        position: relative;
+      }
+      .search input[data-v-fcf596ad] {
+        border-left: none;
+        border-right: none;
+        border-top: none;
+        border-bottom: 1px solid #000;
+        padding: 11px 11px;
+        font-size: 0.9rem;
+        width: 192px;
+      }
+      .search input[data-v-fcf596ad]:hover {
+        border-left: 2px solid #000;
+        border-right: 2px solid #000;
+        border-top: 2px solid #000;
+        border-bottom: 2px solid #000;
+      }
+      .search span[data-v-fcf596ad] {
+        position: absolute;
+        right: 11px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+      }
+      .nav_member[data-v-fcf596ad] {
+        display: flex;
+        align-items: center;
+      }
+      .log-in[data-v-fcf596ad] {
+        margin: 0px 35px;
+      }
+      .log-in a[data-v-fcf596ad] {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #000;
+      }
+      .shopCar a[data-v-fcf596ad] {
+        display: block;
+        position: relative;
+        text-decoration: none;
+      }
+      .shopCar a svg[data-v-fcf596ad] {
+        font-size: 1.5rem;
+        color: #000;
+      }
+      .shopCar a span[data-v-fcf596ad] {
+        font-size: 0.9rem;
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #000;
+      }
+    </style>
+    <style
+      type="text/css"
+      data-vite-dev-id="C:/Users/billy/OneDrive/文件/GitHub/Visage/src/views/Home/components/HomeBanner.vue?vue&amp;type=style&amp;index=0&amp;scoped=d2f6d7f7&amp;lang.css"
+    >
+      .banner[data-v-d2f6d7f7] {
+        position: relative;
+      }
+      .banner_text h1[data-v-d2f6d7f7] {
+        font-size: 4rem;
+        font-weight: normal;
+        letter-spacing: 2px;
+        margin: 0px 0 40px 0px;
+      }
+      .banner_text[data-v-d2f6d7f7] {
+        position: absolute;
+        top: 50%;
+        left: 8%;
+        transform: translateY(-50%);
+        width: 615px;
+        height: auto;
+      }
+      .banner_text a[data-v-d2f6d7f7] {
+        color: #0a1fc8;
+        border: 1px solid #0a1fc8;
+        border-radius: 5px;
+        padding: 10px 34px;
+        text-decoration: none;
+        background: transparent;
+      }
+      .banner_text a[data-v-d2f6d7f7]:hover {
+        background-color: #0a1fc8;
+        color: #fff;
+        transition: all 0.4s;
+      }
+      .banner_bg img[data-v-d2f6d7f7] {
+        width: 100%;
+        object-fit: cover;
+        object-position: 50% 50%;
+      }
+    </style>
+    <style
+      type="text/css"
+      data-vite-dev-id="C:/Users/billy/OneDrive/文件/GitHub/Visage/src/views/Home/components/HomeHot.vue?vue&amp;type=style&amp;index=0&amp;scoped=63dd240e&amp;lang.css"
+    >
+      .goodsList li[data-v-63dd240e] {
+        width: 25%;
+        margin: 0px 16px;
+      }
+      .goodsList_img[data-v-63dd240e] {
+        position: relative;
+        overflow: hidden;
+      }
+      .goodsList_img:hover .hoverImage[data-v-63dd240e] {
+        opacity: 1;
+      }
+      .goodsList_img img[data-v-63dd240e] {
+        width: 100%;
+        object-fit: cover;
+        object-position: 50% 50%;
+      }
+      .hoverImage[data-v-63dd240e] {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: all 0.3s;
+      }
+      .hoverImage img[data-v-63dd240e] {
+        width: 100%;
+        object-fit: cover;
+        object-position: 50% 50%;
+      }
+      .goodsList_item[data-v-63dd240e] {
+        border: 2px solid #c7c7c7;
+        text-align: center;
+      }
+      .goodsList_item a[data-v-63dd240e] {
+        text-decoration: none;
+      }
+      .goodsList_item:hover .goodsList_View[data-v-63dd240e] {
+        /* opacity: 1; */
+        transform: none;
+        pointer-events: all;
+        transition: all 0.4s;
+      }
+      .goodsList_name[data-v-63dd240e] {
+        color: #000;
+        font-size: 0.9rem;
+      }
+      .goodsList_price[data-v-63dd240e] {
+        color: #0a1fc8;
+      }
+      .goodsList_txt[data-v-63dd240e] {
+        padding: 10px 0;
+        position: relative;
+        background-color: #fff;
+        z-index: 9;
+      }
+      .goodsList_View[data-v-63dd240e] {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(255, 255, 255, 0.7);
+        width: 100%;
+        /* opacity: 0; */
+        transform: translateY(102%);
+        pointer-events: none;
+        transition: all 0.4s;
+      }
+      .goodsList_View p[data-v-63dd240e] {
+        padding: 15px 0;
+        font-size: 0.8rem;
+        color: #000;
+        width: 100%;
+        display: block;
+        text-decoration: none;
+      }
+      .HotGoods h1[data-v-63dd240e] {
+        text-align: center;
+        padding: 50px 0px 0px 0;
+        font-size: 1.6em;
+        letter-spacing: 1.1px;
+        margin-bottom: 37px;
+      }
+      .goodsList ul[data-v-63dd240e] {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .shop_all[data-v-63dd240e] {
+        margin: 60px 0px;
+        text-align: center;
+      }
+      .shop_all a[data-v-63dd240e] {
+        color: #0a1fc8;
+        border: 1px solid #0a1fc8;
+        border-radius: 5px;
+        padding: 10px 34px;
+        text-decoration: none;
+        background: transparent;
+      }
+      .shop_all a[data-v-63dd240e]:hover {
+        background-color: #0a1fc8;
+        color: #fff;
+        transition: all 0.4s;
+      }
+    </style>
+  </head>
+  <body cz-shortcut-listen="true">
+    <div
+      id="app"
+      data-v-app=""
+    >
+      <div
+        data-v-fcf596ad=""
+        class="block"
+      ></div>
+      <div
+        data-v-fcf596ad=""
+        class="Visage_navbar visible"
+      >
+        <div
+          data-v-fcf596ad=""
+          class="nav_link"
+        >
+          <nav data-v-fcf596ad="">
+            <ul data-v-fcf596ad="">
+              <li data-v-fcf596ad="">
+                <a
+                  data-v-fcf596ad=""
+                  aria-current="page"
+                  href="http://localhost:5173/"
+                  class="router-link-active router-link-exact-active textColor_1"
+                  >Shop</a
+                >
+              </li>
+              <li data-v-fcf596ad="">
+                <a
+                  data-v-fcf596ad=""
+                  aria-current="page"
+                  href="http://localhost:5173/"
+                  class="router-link-active router-link-exact-active textColor_1"
+                  >FAQ</a
+                >
+              </li>
+              <li data-v-fcf596ad="">
+                <a
+                  data-v-fcf596ad=""
+                  aria-current="page"
+                  href="http://localhost:5173/"
+                  class="router-link-active router-link-exact-active textColor_1"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div
+          data-v-fcf596ad=""
+          class="logo"
+        >
+          <a
+            data-v-fcf596ad=""
+            class="textColor_1"
+            href="http://localhost:5173/#"
+            >VISAGE</a
+          >
+        </div>
+        <div
+          data-v-fcf596ad=""
+          class="nav_member"
+        >
+          <div
+            class="search"
+            data-v-inspector="src/views/Layout/components/LayoutNav.vue:18:13"
+            data-v-fcf596ad=""
+          >
+            <input
+              type="text"
+              placeholder="Search..."
+              value=""
+              data-v-inspector="src/views/Layout/components/LayoutNav.vue:19:17"
+              data-v-fcf596ad=""
+            /><span
+              data-v-inspector="src/views/Layout/components/LayoutNav.vue:20:17"
+              data-v-fcf596ad=""
+              ><i
+                class="fa-solid fa-magnifying-glass"
+                data-v-inspector="src/views/Layout/components/LayoutNav.vue:20:23"
+                data-v-fcf596ad=""
+              ></i
+            ></span>
+          </div>
+          <div
+            class="log-in"
+            data-v-inspector="src/views/Layout/components/LayoutNav.vue:22:13"
+            data-v-fcf596ad=""
+          >
+            <a
+              href="http://localhost:5173/#"
+              data-v-inspector="src/views/Layout/components/LayoutNav.vue:23:17"
+              data-v-fcf596ad=""
+              ><span
+                style="font-size: 1.6rem; margin-right: 10px"
+                data-v-inspector="src/views/Layout/components/LayoutNav.vue:24:21"
+                data-v-fcf596ad=""
+                ><i
+                  class="fa-solid fa-circle-user"
+                  data-v-inspector="src/views/Layout/components/LayoutNav.vue:24:74"
+                  data-v-fcf596ad=""
+                ></i></span
+              ><span
+                style="font-size: 0.9rem"
+                data-v-inspector="src/views/Layout/components/LayoutNav.vue:25:21"
+                data-v-fcf596ad=""
+                >Log In</span
+              ></a
+            >
+          </div>
+          <div
+            data-v-fcf596ad=""
+            class="shopCar"
+          >
+            <a
+              data-v-fcf596ad=""
+              href="http://localhost:5173/#"
+              ><span
+                data-v-fcf596ad=""
+                class="shopCar_count"
+                >0</span
+              ><svg
+                data-v-fcf596ad=""
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+                style="display: inline-block; width: 25px; padding-bottom: 4px"
+              >
+                <path
+                  data-v-fcf596ad=""
+                  d="M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40L64 64C28.7 64 0 92.7 0 128l0 16 0 48L0 448c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-256 0-48 0-16c0-35.3-28.7-64-64-64l-40 0 0-40c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40L152 64l0-40zM48 192l352 0 0 256c0 8.8-7.2 16-16 16L64 464c-8.8 0-16-7.2-16-16l0-256z"
+                ></path></svg
+            ></a>
+          </div>
+        </div>
+      </div>
+      <!-- 我是header -->
+      <div
+        data-v-d2f6d7f7=""
+        class="banner"
+      >
+        <div
+          data-v-d2f6d7f7=""
+          class="banner_bg"
+        >
+          <img
+            data-v-d2f6d7f7=""
+            src="./Vite App_files/5743b5_2661f76c3b8b451e94e7d18e03a64176~mv2.jpg"
+            alt=""
+          />
+        </div>
+        <div
+          data-v-d2f6d7f7=""
+          class="banner_text"
+        >
+          <h1 data-v-d2f6d7f7="">
+            Reusable<br data-v-d2f6d7f7="" />
+            Face Masks
+          </h1>
+          <a
+            data-v-d2f6d7f7=""
+            aria-current="page"
+            href="http://localhost:5173/"
+            class="router-link-active router-link-exact-active"
+            >Shop Now</a
+          >
+        </div>
+      </div>
+      <div
+        data-v-63dd240e=""
+        class="HotGoods"
+      >
+        <h1
+          data-v-63dd240e=""
+          class="textColor_2"
+        >
+          Most Popular
+        </h1>
+        <div
+          data-v-63dd240e=""
+          class="goodsList"
+        >
+          <ul data-v-63dd240e=""></ul>
+        </div>
+        <div
+          data-v-63dd240e=""
+          class="shop_all"
+        >
+          <a
+            data-v-63dd240e=""
+            aria-current="page"
+            href="http://localhost:5173/"
+            class="router-link-active router-link-exact-active"
+            >Shop All</a
+          >
+        </div>
+        <!-- <div>
+            <h1>測試</h1>
+            <h2>{{ goodsStore.age }}</h2>
+            <h2>{{ goodsStore.gettersAge }}</h2>
+            <button @click="goodsStore.addAge">點我age+1</button>
+        </div> -->
+      </div>
+      <div
+        data-v-63dd240e=""
+        class="block"
+        style="height: 900px"
+      ></div>
+      <!-- <LayoutFooter></LayoutFooter> -->
+    </div>
+    <script src="./Vite App_files/bootstrap.js.下載"></script>
+    <script
+      type="module"
+      src="./Vite App_files/main.ts"
+    ></script>
+
+    <script
+      src="./Vite App_files/devtools-overlay.mjs"
+      type="module"
+    ></script>
+    <div
+      id="vue-inspector-container"
+      data-v-app=""
+    >
+      <div
+        data-v-31d1379f=""
+        data-v-inspector-ignore="true"
+      >
+        <!--v-if--><!-- Overlay --><!--v-if-->
+      </div>
+    </div>
+    <div
+      id="__vue-devtools-container__"
+      data-v-inspector-ignore="true"
+      data-v-app=""
+    >
+      <div
+        data-v-f11919b5=""
+        class="vue-devtools__anchor vue-devtools__anchor--hide"
+        style="
+          left: 794.5px;
+          top: 879px;
+          --vue-devtools-widget-bg: #ffffff;
+          --vue-devtools-widget-fg: #111;
+          --vue-devtools-widget-border: #efefef;
+          --vue-devtools-widget-shadow: rgba(128, 128, 128, 0.1);
+        "
+      >
+        <div
+          data-v-f11919b5=""
+          class="vue-devtools__anchor--glowing"
+          style=""
+        ></div>
+        <div
+          data-v-f11919b5=""
+          class="vue-devtools__panel"
+          style="
+            transform: translate(-50%, calc(-50% + 15px));
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+          "
+        >
+          <div
+            data-v-f11919b5=""
+            class="vue-devtools__anchor-btn panel-entry-btn"
+            title="Toggle Vue DevTools"
+            aria-label="Toggle devtools panel"
+            style="filter: saturate(0)"
+          >
+            <svg
+              data-v-f11919b5=""
+              viewBox="0 0 256 198"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                data-v-f11919b5=""
+                fill="#41B883"
+                d="M204.8 0H256L128 220.8L0 0h97.92L128 51.2L157.44 0h47.36Z"
+              ></path>
+              <path
+                data-v-f11919b5=""
+                fill="#41B883"
+                d="m0 0l128 220.8L256 0h-51.2L128 132.48L50.56 0H0Z"
+              ></path>
+              <path
+                data-v-f11919b5=""
+                fill="#35495E"
+                d="M50.56 0L128 133.12L204.8 0h-47.36L128 51.2L97.92 0H50.56Z"
+              ></path>
+            </svg>
+          </div>
+          <div
+            data-v-f11919b5=""
+            class="vue-devtools__panel-content vue-devtools__panel-divider"
+          ></div>
+          <div
+            data-v-f11919b5=""
+            class="vue-devtools__anchor-btn vue-devtools__panel-content vue-devtools__inspector-button active"
+            title="Toggle Component Inspector"
+          >
+            <svg
+              data-v-f11919b5=""
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              style="
+                height: 1.1em;
+                width: 1.1em;
+                opacity: 1;
+                color: rgb(0, 220, 130);
+              "
+            >
+              <g
+                data-v-f11919b5=""
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+              >
+                <circle
+                  data-v-f11919b5=""
+                  cx="12"
+                  cy="12"
+                  r=".5"
+                  fill="currentColor"
+                ></circle>
+                <path
+                  data-v-f11919b5=""
+                  d="M5 12a7 7 0 1 0 14 0a7 7 0 1 0-14 0m7-9v2m-9 7h2m7 7v2m7-9h2"
+                ></path>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div
+          data-v-57103419=""
+          data-v-f11919b5=""
+          class="vue-devtools-frame"
+          style="
+            z-index: -1;
+            pointer-events: auto;
+            width: min(80vw, -48px + 100vw);
+            height: min(60vh, -48px + 100vh);
+            left: 0px;
+            transform: translate(-50%, 0px);
+            bottom: 0px;
+            display: none;
+          "
+        >
+          <div
+            data-v-57103419=""
+            class="vue-devtools-resize vue-devtools-resize--horizontal"
+            style="top: 0px"
+          ></div>
+          <div
+            data-v-57103419=""
+            class="vue-devtools-resize vue-devtools-resize--horizontal"
+            style="bottom: 0px; display: none"
+          ></div>
+          <div
+            data-v-57103419=""
+            class="vue-devtools-resize vue-devtools-resize--vertical"
+            style="left: 0px"
+          ></div>
+          <div
+            data-v-57103419=""
+            class="vue-devtools-resize vue-devtools-resize--vertical"
+            style="right: 0px"
+          ></div>
+          <div
+            data-v-57103419=""
+            class="vue-devtools-resize vue-devtools-resize-corner"
+            style="top: 0px; left: 0px; cursor: nwse-resize"
+          ></div>
+          <div
+            data-v-57103419=""
+            class="vue-devtools-resize vue-devtools-resize-corner"
+            style="top: 0px; right: 0px; cursor: nesw-resize"
+          ></div>
+          <div
+            data-v-57103419=""
+            class="vue-devtools-resize vue-devtools-resize-corner"
+            style="bottom: 0px; left: 0px; cursor: nesw-resize; display: none"
+          ></div>
+          <div
+            data-v-57103419=""
+            class="vue-devtools-resize vue-devtools-resize-corner"
+            style="bottom: 0px; right: 0px; cursor: nwse-resize; display: none"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
