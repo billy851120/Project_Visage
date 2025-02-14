@@ -5,7 +5,7 @@
       <ProductList_item category="MostPopular"></ProductList_item>
     </div>
     <div class="shop_all">
-      <router-link to="/">Shop All</router-link>
+      <router-link to="/shop">Shop All</router-link>
     </div>
   </div>
 </template>
@@ -18,9 +18,9 @@
 
   //數據
   const goodsStore = useGoodsStore();
-  goodsStore.setCategory("MostPopular");
 
   //方法
+  console.log(goodsStore.filteredProducts);
 </script>
 
 <style scoped>

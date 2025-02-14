@@ -3,7 +3,7 @@ import Layout from "@/views/Layout/index.vue";
 import Login from "@/views/Login/index.vue";
 import Home from "@/views/Home/index.vue";
 import Shop from "@/views/Shop/index.vue";
-import FAQ from "@/views/FAQ/index.vue";
+import Faq from "@/views/FAQ/index.vue";
 import General from "@/views/FAQ/components/General.vue";
 import SettingUp from "@/views/FAQ/components/SettingUp.vue";
 import Contact from "@/views/Contact/index.vue";
@@ -42,8 +42,8 @@ const router = createRouter({
           component: GoodsView,
         },
         {
-          path: "faq",
-          component: FAQ,
+          path: "FAQ",
+          component: Faq,
           children: [
             {
               path: "",

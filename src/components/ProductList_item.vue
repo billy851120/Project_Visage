@@ -65,12 +65,16 @@
   const mostPopularProducts = computed(() => goodsStore.mostPopularProducts);
   const selectedCategory = ref("");
 
-  console.log(goodsStore.filteredProducts);
-
   //方法
   onMounted(() => {
+    const isHome = route.path === "/";
     const category = route.params.browse as string;
-    goodsStore.setCategory(category || "");
+
+    if (isHome) {
+      goodsStore.setCategory("MostPopular");
+    } else {
+      goodsStore.setCategory(category || "");
+    }
   });
   watch(
     () => route.params.browse,

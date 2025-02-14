@@ -14,9 +14,15 @@
         <div class="col-3 footer-content">
           <h3>Shop</h3>
           <ul>
-            <li><a href="#">Shop all</a></li>
-            <li><a href="#">Adults</a></li>
-            <li><a href="#">kids</a></li>
+            <li>
+              <router-link to="/shop">Shop all</router-link>
+            </li>
+            <li>
+              <router-link to="/shop/goodsList/Adults">Adults</router-link>
+            </li>
+            <li>
+              <router-link to="/shop/goodsList/Kids">kids</router-link>
+            </li>
           </ul>
         </div>
         <div class="col-3 footer-content">
